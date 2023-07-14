@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace UdemyAuthServer.Core.Services
 {
-    public interface IService<T, TDto> where T : class where TDto : class
+    public interface IService<T,TDto> where T : class where TDto : class
     {
         Task<Response<TDto>> GetByIdAsync(int id);
         Task<Response<IEnumerable<TDto>>> GetAllAsync();
         Task<Response<IEnumerable<TDto>>> Where(Expression<Func<T, bool>> predicate);
-        Task<Response<TDto>> AddAsync(T entity);
-        Task<Response<NoContentDto>>  Remove(T entity);
-        Task<Response<NoContentDto>> Update(T entity);
+        Task<Response<TDto>> AddAsync(TDto entity);
+        Task<Response<NoContentDto>>  Remove(int id);
+        Task<Response<NoContentDto>> Update(TDto entity, int id);
     }
 }
