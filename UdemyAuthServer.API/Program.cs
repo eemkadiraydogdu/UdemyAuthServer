@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SharedLibrary.Configuration;
+using SharedLibrary.Services;
 using System.Reflection;
 using UdemyAuthServer.Core.Configuration;
 using UdemyAuthServer.Core.Models;
@@ -81,6 +82,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

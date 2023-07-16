@@ -12,7 +12,7 @@ using UdemyAuthServer.Data;
 namespace UdemyAuthServer.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230714202417_init")]
+    [Migration("20230716151423_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -195,7 +195,6 @@ namespace UdemyAuthServer.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("City")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 

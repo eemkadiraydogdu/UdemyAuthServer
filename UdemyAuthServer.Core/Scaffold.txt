@@ -1,0 +1,2 @@
+﻿Scaffold-DbContext -Connection "Server=10.0.4.116;TrustServerCertificate=True; Initial Catalog = XDataTest; Persist Security Info=True; User ID = LojmanUser; Password = 6yhn+5tgb-" -Provider Microsoft.EntityFrameworkCore.SqlServer -OutputDir "Entities" -ContextDir "DB" -Context "ERPDbContext" -NoPluralize -UseDatabaseNames -Force
+Scaffold-DbContext "Name=ConnectionStrings:SqlServer" Microsoft.EntityFrameworkCore.SqlServer -OutputDir "Models" -ContextDir "DB" -Context "AppDbContext" -NoPluralize -UseDatabaseNames -Force
