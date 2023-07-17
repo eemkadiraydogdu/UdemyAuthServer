@@ -1,7 +1,9 @@
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SharedLibrary.Configuration;
+using SharedLibrary.Extensions;
 using SharedLibrary.Services;
 using System.Reflection;
 using UdemyAuthServer.Core.Configuration;
@@ -65,9 +67,16 @@ builder.Services.AddAuthentication(options =>
 	};
 });
 
-// Add services to the container.
 
-builder.Services.AddControllers();
+
+
+builder.Services.AddControllers().AddFluentValidation(options =>
+{
+	options.RegisterValidatorsFromAssemblyContaining<Program>();
+});
+
+builder.Services.UseCustomValidationResponse();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -80,7 +89,11 @@ if (app.Environment.IsDevelopment())
 	app.UseSwagger();
 	app.UseSwaggerUI();
 }
-
+else
+{
+    
+}
+app.UseCustomException();
 app.UseHttpsRedirection();
 
 app.UseRouting();
