@@ -21,7 +21,7 @@ namespace UdemyAuthServer.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateUser(CreateUserDto createUserDto)
         {
-            throw new CustomException("Veritabanı ile ilgili bir hata meydana geldi");
+            //throw new CustomException("Veritabanı ile ilgili bir hata meydana geldi");
             return ActionResultInstance(await _userService.CtreateUserAsync(createUserDto));
         }
 
