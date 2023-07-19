@@ -38,7 +38,7 @@ namespace SharedLibrary.Extensions
                             errorDto = new ErrorDto(ex.Message, false);
                         }
 
-                        var response = Response<NoContentDto>.Fail(errorDto, 500);
+                        var response = Response<NoContent>.Fail(errorDto, 500);
                         await context.Response.WriteAsync(JsonSerializer.Serialize(response));
                     }
                 });

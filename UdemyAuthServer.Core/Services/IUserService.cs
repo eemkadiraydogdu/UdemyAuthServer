@@ -12,5 +12,6 @@ namespace UdemyAuthServer.Core.Services
     {
         Task<Response<UserAppDto>> CtreateUserAsync(CreateUserDto createUserDto);
         Task<Response<UserAppDto>> GetUserByNameAsync(string userName);
+        Task<Response<NoContent>> CreateUserRoles(string userName);
     }
 }

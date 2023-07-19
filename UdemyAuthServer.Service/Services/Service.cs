@@ -49,29 +49,29 @@ namespace UdemyAuthServer.Service.Services
             return Response<TDto>.Success(ObjectMapper.Mapper.Map<TDto>(product), 200);
         }
 
-        public async Task<Response<NoContentDto>> Remove(int id)
+        public async Task<Response<NoContent>> Remove(int id)
         {
             var isExistEntity = await _repository.GetByIdAsync(id);
             if(isExistEntity == null)
             {
-                return Response<NoContentDto>.Fail("Id not found",404,true);
+                return Response<NoContent>.Fail("Id not found",404,true);
             }
             _repository.Remove(isExistEntity);
             await _unitOfWork.CommitAsync();
-            return Response<NoContentDto>.Success(204);
+            return Response<NoContent>.Success(204);
         }
 
-        public async Task<Response<NoContentDto>> Update(TDto entity, int id)
+        public async Task<Response<NoContent>> Update(TDto entity, int id)
         {
             var isExistEntity = await _repository.GetByIdAsync(id);
             if (isExistEntity == null)
             {
-                return Response<NoContentDto>.Fail("Id not found", 404, true);
+                return Response<NoContent>.Fail("Id not found", 404, true);
             }
             var updateEntity =ObjectMapper.Mapper.Map<T>(entity);
             _repository.Update(updateEntity);
             await _unitOfWork.CommitAsync();
-            return Response<NoContentDto>.Success(204);
+            return Response<NoContent>.Success(204);
         }
 
         public async Task<Response<IEnumerable<TDto>>> Where(Expression<Func<T, bool>> predicate)

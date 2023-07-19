@@ -93,16 +93,16 @@ namespace UdemyAuthServer.Service.Services
             return Response<TokenDto>.Success(tokenDto,200);
         }
 
-        public async Task<Response<NoContentDto>> RevokeRefreshToken(string refreshToken)
+        public async Task<Response<NoContent>> RevokeRefreshToken(string refreshToken)
         {
             var existRefreshToken = await _userRefreshTokenRepository.Where(x =>x.Code == refreshToken).SingleOrDefaultAsync();
             if (existRefreshToken == null)
             {
-                return Response<NoContentDto>.Fail("Refresh token not found", 404, true);
+                return Response<NoContent>.Fail("Refresh token not found", 404, true);
             }
             _userRefreshTokenRepository.Remove(existRefreshToken);
             await _unitOfWork.CommitAsync();
-            return Response<NoContentDto>.Success(200);
+            return Response<NoContent>.Success(200);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SharedLibrary.Dto
 {
-    public class NoContentDto
+    public class NoContent
     {
     }
 }
